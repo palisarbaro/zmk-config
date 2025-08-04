@@ -10,16 +10,6 @@
 
 / {
     behaviors {
-        tp: tap_preferred {
-            compatible = "zmk,behavior-hold-tap";
-            label = "TAP_PREFERRED";
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <0>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-
         hmr: hmr {
             compatible = "zmk,behavior-hold-tap";
             label = "HMR";
@@ -28,9 +18,10 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
-            flavor = "balanced";
+            flavor = "tap-preferred";
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38>;
             hold-trigger-on-release;
+            retro-tap;
         };
 
         hml: hml {
@@ -41,13 +32,30 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
-            flavor = "balanced";
+            flavor = "tap-preferred";
             hold-trigger-key-positions = <6 7 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 39 40 41 8>;
             hold-trigger-on-release;
+            retro-tap;
         };
     };
 
-    combos { compatible = "zmk,combos"; };
+    combos {
+        compatible = "zmk,combos";
+
+        ch_lang_combo {
+            bindings = <&ch_lang>;
+            key-positions = <36 41>;
+        };
+    };
+
+    macros {
+        ch_lang: ch_lang {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_GUI &kp SPACE>;
+            label = "CH_LANG";
+        };
+    };
 
     keymap {
         compatible = "zmk,keymap";
@@ -60,10 +68,10 @@
             //                    | GUI | LWR | ALT/ENT |   | HYPER/SPC | BKSP  | RSE |
 
             bindings = <
-&kp ESCAPE  &kp Q            &kp W            &kp E              &kp R                &kp T        &kp Y      &kp U                 &kp I               &kp O             &kp P     &kp BACKSPACE
-&kp TAB     &hmr LEFT_GUI A  &hmr LEFT_ALT S  &hmr LEFT_SHIFT D  &hmr LEFT_CONTROL F  &kp G        &kp H      &hml RIGHT_CONTROL J  &hml RIGHT_SHIFT K  &hml RIGHT_ALT L  &kp SEMI  &kp LEFT_BRACKET
-&kp LSHFT   &kp Z            &kp X            &kp C              &kp V                &kp B        &kp N      &kp M                 &kp COMMA           &kp DOT           &kp FSLH  &kp RIGHT_BRACKET
-                                              &none              &mo 1                &kp SPACE    &kp ENTER  &mo 2                 &none
+&kp ESCAPE    &kp Q  &kp W            &kp E              &kp R                &kp T        &kp Y      &kp U                 &kp I               &kp O             &kp P     &kp BACKSPACE
+&kp TAB       &kp A  &hmr LEFT_ALT S  &hmr LEFT_SHIFT D  &hmr LEFT_CONTROL F  &kp G        &kp H      &hml RIGHT_CONTROL J  &hml RIGHT_SHIFT K  &hml RIGHT_ALT L  &kp SEMI  &kp LEFT_BRACKET
+&kp LEFT_GUI  &kp Z  &kp X            &kp C              &kp V                &kp B        &kp N      &kp M                 &kp COMMA           &kp DOT           &kp FSLH  &kp RIGHT_BRACKET
+                                      &none              &mo 1                &kp SPACE    &kp ENTER  &mo 2                 &none
             >;
         };
 
@@ -75,10 +83,10 @@
             //                     | GUI |     | ALT/ENT |   | HYPER/SPACE | BKSP |    |
 
             bindings = <
-&trans        &kp NUMBER_1      &kp NUMBER_2       &kp NUMBER_3    &kp NUMBER_4      &kp N5              &kp NUMBER_6  &kp N7         &kp N8           &kp N9    &kp N0     &kp DELETE
-&trans        &kp LEFT_GUI      &kp LEFT_ALT       &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp PLUS            &none         &kp UP_ARROW   &kp DOWN         &kp LEFT  &kp RIGHT  &trans
-&kp LEFT_ALT  &kp SINGLE_QUOTE  &kp DOUBLE_QUOTES  &kp PIPE        &kp AMPS          &kp MINUS           &kp EQUAL     &kp PAGE_UP    &kp PAGE_DOWN    &kp HOME  &kp END    &kp RIGHT_ALT
-                                                   &kp LEFT_SHIFT  &kp LEFT_ALT      &kp LEFT_CONTROL    &kp RCTRL     &kp RIGHT_ALT  &kp RIGHT_SHIFT
+&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3    &kp NUMBER_4      &kp N5              &kp NUMBER_6  &kp N7         &kp N8           &kp N9    &kp N0     &kp DELETE
+&trans  &kp LEFT_GUI  &kp LEFT_ALT  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp PLUS            &none         &kp UP_ARROW   &kp DOWN         &kp LEFT  &kp RIGHT  &none
+&trans  &kp QUESTION  &kp EXCL      &kp PIPE        &kp AMPS          &kp MINUS           &kp EQUAL     &kp PAGE_UP    &kp PAGE_DOWN    &kp HOME  &kp END    &none
+                                    &kp LEFT_SHIFT  &kp LEFT_ALT      &kp LEFT_CONTROL    &kp RCTRL     &kp RIGHT_ALT  &kp RIGHT_SHIFT
             >;
         };
 
@@ -90,10 +98,10 @@
             //                    |     |     |    |                  |     |     |     |
 
             bindings = <
-&trans  &kp F1            &kp F2             &kp F3          &kp F4        &kp F5              &kp F6          &kp F7          &kp F8  &kp F9  &kp F10        &trans
-&trans  &bl BL_INC        &bl BL_DEC         &kp C_VOL_DN    &kp C_VOL_UP  &kp PRINTSCREEN     &kp F11         &kp F12         &none   &none   &kp F11        &trans
-&none   &kp SINGLE_QUOTE  &kp DOUBLE_QUOTES  &kp GRAVE       &none         &none               &kp LANGUAGE_1  &kp LANGUAGE_2  &trans  &trans  &kp BACKSLASH  &trans
-                                             &kp LEFT_SHIFT  &kp LEFT_ALT  &kp LEFT_CONTROL    &trans          &trans          &trans
+&trans  &kp F1      &kp F2             &kp F3            &kp F4        &kp F5              &kp F6   &kp F7   &kp F8  &kp F9  &kp F10        &trans
+&trans  &bl BL_INC  &bl BL_DEC         &kp C_VOL_DN      &kp C_VOL_UP  &kp PRINTSCREEN     &kp F11  &kp F12  &none   &none   &none          &none
+&none   &kp GRAVE   &kp DOUBLE_QUOTES  &kp SINGLE_QUOTE  &none         &none               &kp F12  &none    &trans  &trans  &kp BACKSLASH  &none
+                                       &kp LEFT_SHIFT    &kp LEFT_ALT  &kp LEFT_CONTROL    &trans   &trans   &trans
             >;
         };
     };
