@@ -52,7 +52,7 @@
         ch_lang: ch_lang {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_GUI &kp SPACE>;
+            bindings = <&kp LG(SPACE)>;
             label = "CH_LANG";
         };
     };
