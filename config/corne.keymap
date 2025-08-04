@@ -35,6 +35,13 @@
             hold-trigger-key-positions = <6 7 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 39 40 41 8>;
             hold-trigger-on-release;
         };
+
+        layer3: layer3 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "LAYER3";
+            #binding-cells = <0>;
+            bindings = <&to 0>, <&to 3>;
+        };
     };
 
     combos {
@@ -69,7 +76,7 @@
 &kp ESCAPE    &kp Q  &kp W            &kp E              &kp R                &kp T        &kp Y      &kp U                 &kp I               &kp O             &kp P     &kp BACKSPACE
 &kp TAB       &kp A  &hmr LEFT_ALT S  &hmr LEFT_SHIFT D  &hmr LEFT_CONTROL F  &kp G        &kp H      &hml RIGHT_CONTROL J  &hml RIGHT_SHIFT K  &hml RIGHT_ALT L  &kp SEMI  &kp LEFT_BRACKET
 &kp LEFT_GUI  &kp Z  &kp X            &kp C              &kp V                &kp B        &kp N      &kp M                 &kp COMMA           &kp DOT           &kp FSLH  &kp RIGHT_BRACKET
-                                      &none              &mo 1                &kp SPACE    &kp ENTER  &mo 2                 &none
+                                      &layer3            &mo 1                &kp SPACE    &kp ENTER  &mo 2                 &none
             >;
         };
 
@@ -100,6 +107,15 @@
 &trans  &bl BL_INC  &bl BL_DEC         &kp C_VOL_DN      &kp C_VOL_UP  &kp PRINTSCREEN     &kp F11  &kp F12  &none   &none   &none          &none
 &none   &kp GRAVE   &kp DOUBLE_QUOTES  &kp SINGLE_QUOTE  &none         &none               &kp F12  &none    &trans  &trans  &kp BACKSLASH  &none
                                        &kp LEFT_SHIFT    &kp LEFT_ALT  &kp LEFT_CONTROL    &trans   &trans   &trans
+            >;
+        };
+
+        layer_3 {
+            bindings = <
+&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans          &trans       &trans          &trans     &trans  &trans  &trans            &trans
+&trans  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &trans          &trans       &trans          &trans     &trans  &trans  &trans            &trans
+&trans  &kp N7        &kp N8        &kp N9        &kp N0          &trans       &kp LEFT_ARROW  &kp RIGHT  &trans  &trans  &kp LEFT_CONTROL  &kp LEFT_SHIFT
+                                    &trans        &kp LEFT_SHIFT  &kp SPACE    &kp UP_ARROW    &kp Z      &trans
             >;
         };
     };
