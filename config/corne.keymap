@@ -89,10 +89,10 @@
             //                     | GUI |     | ALT/ENT |   | HYPER/SPACE | BKSP |    |
 
             bindings = <
-&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3    &kp NUMBER_4      &kp N5              &kp NUMBER_6  &kp N7         &kp N8           &kp N9    &kp N0     &kp DELETE
-&trans  &kp LEFT_GUI  &kp LEFT_ALT  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp PLUS            &none         &kp UP_ARROW   &kp DOWN         &kp LEFT  &kp RIGHT  &none
-&trans  &kp QUESTION  &kp EXCL      &kp PIPE        &kp AMPS          &kp MINUS           &kp EQUAL     &kp PAGE_UP    &kp PAGE_DOWN    &kp HOME  &kp END    &none
-                                    &kp LEFT_SHIFT  &kp LEFT_ALT      &kp LEFT_CONTROL    &kp RCTRL     &kp RIGHT_ALT  &kp RIGHT_SHIFT
+&trans  &kp NUMBER_1          &kp NUMBER_2           &kp NUMBER_3    &kp NUMBER_4      &kp N5              &kp NUMBER_6  &kp N7         &kp N8           &kp N9     &kp N0    &kp DELETE
+&trans  &kp LEFT_GUI          &kp LEFT_ALT           &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp PLUS            &kp LEFT      &kp DOWN       &kp UP_ARROW     &kp RIGHT  &kp HOME  &kp PAGE_UP
+&trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp PIPE        &kp AMPS          &kp MINUS           &kp EQUAL     &kp EXCL       &kp QUESTION     &kp HOME   &kp END   &kp PAGE_DOWN
+                                                     &kp LEFT_SHIFT  &kp LEFT_ALT      &kp LEFT_CONTROL    &kp RCTRL     &kp RIGHT_ALT  &kp RIGHT_SHIFT
             >;
         };
 
